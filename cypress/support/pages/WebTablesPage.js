@@ -28,6 +28,14 @@ class WebTablesPage {
     cy.contains('tr', email).find('[title="Delete"]').click()
   }
 
+  mostrar20Linhas() {
+    cy.get('.pagination select').select('20')
+  }
+
+  linhas() {
+    return cy.get('.web-tables-wrapper tbody tr')
+  }
+
   tabela() {
     return cy.get('.web-tables-wrapper tbody')
   }

@@ -11,3 +11,9 @@ Funcionalidade: Web Tables
     E edito o registro criado
     E deleto o registro criado
     Então o registro não aparece mais na tabela
+
+  Cenário: Criar 12 registros e deletar todos
+    Quando eu crio 12 novos registros
+    Então os 12 registros aparecem na tabela
+    Quando eu deleto todos os registros novos
+    Então a tabela fica só com os registros iniciais

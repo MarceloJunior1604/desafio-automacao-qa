@@ -31,3 +31,34 @@ When('deleto o registro criado', () => {
 Then('o registro não aparece mais na tabela', () => {
   webTablesPage.tabela().should('not.contain', pessoa.email)
 })
+
+When('eu crio {int} novos registros', (quantidade) => {
+  webTablesPage.mostrar20Linhas()
+
+  for (let i = 1; i <= quantidade; i++) {
+    webTablesPage.clicarEmAdd()
+    webTablesPage.preencherCadastro({
+      nome: 'Usuario' + i,
+      sobrenome: 'Teste',
+      email: 'usuario' + i + '@teste.com',
+      idade: '25',
+      salario: '3000',
+      departamento: 'QA'
+    })
+  }
+})
+
+Then('os {int} registros aparecem na tabela', (quantidade) => {
+  webTablesPage.linhas().should('have.length', quantidade + 3)
+  webTablesPage.tabela().should('contain', 'usuario1@teste.com')
+  webTablesPage.tabela().should('contain', 'usuario' + quantidade + '@teste.com')
+})
+
+When('eu deleto todos os registros novos', () => {
+  webTablesPage.deletar('usuario1@teste.com')
+})
+
+Then('a tabela fica só com os registros iniciais', () => {
+  webTablesPage.linhas().should('have.length', 3)
+  webTablesPage.tabela().should('not.contain', '@teste.com')
+})
