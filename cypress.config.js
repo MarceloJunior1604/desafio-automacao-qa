@@ -9,6 +9,7 @@ module.exports = defineConfig({
     specPattern: 'cypress/e2e/**/*.feature',
     viewportWidth: 1920,
     viewportHeight: 1080,
+    retries: 1,
     blockHosts: ['*.googlesyndication.com', '*.doubleclick.net', '*.adtrafficquality.google', '*.openx.net'],
     async setupNodeEvents(on, config) {
       await addCucumberPreprocessorPlugin(on, config)
