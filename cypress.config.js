@@ -7,6 +7,9 @@ module.exports = defineConfig({
   e2e: {
     baseUrl: 'https://demoqa.com',
     specPattern: 'cypress/e2e/**/*.feature',
+    viewportWidth: 1920,
+    viewportHeight: 1080,
+    blockHosts: ['*.googlesyndication.com', '*.doubleclick.net', '*.adtrafficquality.google', '*.openx.net'],
     async setupNodeEvents(on, config) {
       await addCucumberPreprocessorPlugin(on, config)
       on('file:preprocessor', createBundler({
