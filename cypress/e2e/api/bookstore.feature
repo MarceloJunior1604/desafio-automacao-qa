@@ -5,3 +5,6 @@ Funcionalidade: API Book Store
     Dado que eu crio um novo usuário
     E gero o token de acesso
     E verifico que o usuário está autorizado
+    Quando eu listo os livros disponíveis
+    E alugo dois livros
+    Então os livros aparecem nos detalhes do usuário
